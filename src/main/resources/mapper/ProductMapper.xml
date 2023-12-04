@@ -1,7 +1,6 @@
 <!-- ProductMapper.xml -->
-
-<mapper namespace="com.fine.bookmanagesystem.dao.ProductDao">
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fine.bookmanagesystem.mapper.ProductMapper">
     <!-- 查询所有商品 -->
     <select id="getAllProducts" resultType="com.fine.bookmanagesystem.model.Product">
         SELECT * FROM product;
@@ -26,5 +25,4 @@
     <delete id="deleteProduct" parameterType="Long">
         DELETE FROM product WHERE id = #{id};
     </delete>
-
 </mapper>
