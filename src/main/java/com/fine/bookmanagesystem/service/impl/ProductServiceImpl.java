@@ -1,45 +1,42 @@
 package com.fine.bookmanagesystem.service.impl;
 
-import com.fine.bookmanagesystem.dao.ProductDao;
+import com.fine.bookmanagesystem.mapper.ProductMapper;
 import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+    private final ProductMapper productMapper;
 
-    private final ProductDao productDao;
-
-    @Autowired
-    public ProductServiceImpl(ProductDao productDao) {
-        this.productDao = productDao;
+    public ProductServiceImpl(ProductMapper productMapper) {
+        this.productMapper = productMapper;
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return productDao.getAllProducts();
+        return productMapper.getAllProducts();
     }
 
     @Override
-    public Product getProductById(Long id) {
-        return productDao.getProductById(id);
+    public Product getProductById(int id) {
+        return productMapper.getProductById(id);
     }
 
     @Override
     public void addProduct(Product product) {
-        productDao.addProduct(product);
+        productMapper.addProduct(product);
     }
 
     @Override
     public void updateProduct(Product product) {
-        productDao.updateProduct(product);
+        productMapper.updateProduct(product);
     }
 
     @Override
-    public void deleteProduct(Long id) {
-        productDao.deleteProduct(id);
+    public void deleteProduct(int id) {
+        productMapper.deleteProduct(id);
     }
 }

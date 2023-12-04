@@ -30,7 +30,7 @@ public class ProductController {
 
     // 显示单个商品详情
     @GetMapping("/{id}")
-    public String getProductDetails(@PathVariable Long id, Model model) {
+    public String getProductDetails(@PathVariable Integer id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "product/details"; // 这里假设有一个名为 "details.html" 的 Thymeleaf 模板用于显示商品详情
@@ -52,7 +52,7 @@ public class ProductController {
 
     // 处理更新商品的页面请求
     @GetMapping("/{id}/update")
-    public String showUpdateProductForm(@PathVariable Long id, Model model) {
+    public String showUpdateProductForm(@PathVariable Integer id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "product/update"; // 这里假设有一个名为 "update.html" 的 Thymeleaf 模板用于显示更新商品的表单
@@ -68,7 +68,7 @@ public class ProductController {
 
     // 处理删除商品的请求
     @GetMapping("/{id}/delete")
-    public String deleteProduct(@PathVariable Long id) {
+    public String deleteProduct(@PathVariable Integer id) {
         productService.deleteProduct(id);
         return "redirect:/products";
     }

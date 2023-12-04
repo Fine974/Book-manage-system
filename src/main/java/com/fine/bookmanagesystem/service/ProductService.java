@@ -1,7 +1,6 @@
 package com.fine.bookmanagesystem.service;
 
 import com.fine.bookmanagesystem.model.Product;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -9,11 +8,11 @@ public interface ProductService {
 
     List<Product> getAllProducts();
 
-    Product getProductById(Long id);
+    Product getProductById(int id);
 
     void addProduct(Product product);
 
     void updateProduct(Product product);
 
-    void deleteProduct(Long id);
+    void deleteProduct(int id);
 }
