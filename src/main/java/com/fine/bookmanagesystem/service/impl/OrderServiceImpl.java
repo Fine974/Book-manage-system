@@ -1,23 +1,35 @@
 package com.fine.bookmanagesystem.service.impl;
 
-import com.fine.bookmanagesystem.dao.OrderDAO;
+import com.fine.bookmanagesystem.mapper.OrderMapper;
 import com.fine.bookmanagesystem.model.Order;
 import com.fine.bookmanagesystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private final OrderDAO orderDAO;
+    private final OrderMapper orderMapper;
 
     @Autowired
-    public OrderServiceImpl(OrderDAO orderDAO) {
-        this.orderDAO = orderDAO;
+    public OrderServiceImpl(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
     }
 
     @Override
-    public void placeOrder(Order order) {
-        orderDAO.createOrder(order);
+    public void createOrder(Order order) {
+        orderMapper.createOrder(order);
+    }
+
+    @Override
+    public List<Order> getOrdersByUserId(Long userId) {
+        return orderMapper.getOrdersByUserId(userId);
+    }
+
+    @Override
+    public Order getOrderById(Long orderId) {
+        return orderMapper.getOrderById(orderId);
     }
 }
