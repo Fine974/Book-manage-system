@@ -60,7 +60,7 @@ public class ProductController {
 
     // 处理更新商品的表单提交
     @PostMapping("/{id}/update")
-    public String updateProduct(@PathVariable Long id, @ModelAttribute Product product) {
+    public String updateProduct(@PathVariable int id, @ModelAttribute Product product) {
         product.setId(id);
         productService.updateProduct(product);
         return "redirect:/products";

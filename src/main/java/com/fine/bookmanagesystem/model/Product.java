@@ -1,7 +1,7 @@
 package com.fine.bookmanagesystem.model;
 
 public class Product {
-    private Long id;
+    private int id;
     private String title;
     private String author;
     private Double price;
@@ -10,11 +10,11 @@ public class Product {
     // 省略构造方法、getter和setter
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

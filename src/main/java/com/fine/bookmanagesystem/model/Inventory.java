@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Inventory {
-    private Long id;
-    private Long productId;
+    private int id;
+    private int productId;
     private int quantity;
 }

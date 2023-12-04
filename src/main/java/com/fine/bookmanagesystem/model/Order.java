@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    private Long orderId;
-    private Long userId;
-    private Long bookId;
+    private int orderId;
+    private int userId;
+    private int bookId;
     private int quantity;
     private double totalPrice;
 }

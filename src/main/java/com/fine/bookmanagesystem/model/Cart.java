@@ -1,34 +1,34 @@
 package com.fine.bookmanagesystem.model;
 
 public class Cart {
-    private Long id;  // Assuming each cart item has a unique ID
-    private Long userId;
-    private Long bookId;
+    private int id;  // Assuming each cart item has a unique ID
+    private int userId;
+    private int bookId;
     private int quantity;
 
     // Constructors, getters, and setters
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public Long getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
