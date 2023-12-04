@@ -24,12 +24,12 @@ public class OrderController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+    public List<Order> getOrdersByUserId(@PathVariable int userId) {
         return orderService.getOrdersByUserId(userId);
     }
 
     @GetMapping("/{orderId}")
-    public Order getOrderById(@PathVariable Long orderId) {
+    public Order getOrderById(@PathVariable int orderId) {
         return orderService.getOrderById(orderId);
     }
 }

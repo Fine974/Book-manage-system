@@ -8,7 +8,7 @@ public interface OrderService {
 
     void createOrder(Order order);
 
-    List<Order> getOrdersByUserId(Long userId);
+    List<Order> getOrdersByUserId(int userId);
 
-    Order getOrderById(Long orderId);
+    Order getOrderById(int orderId);
 }

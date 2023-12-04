@@ -13,8 +13,8 @@ public interface OrderMapper {
     void createOrder(Order order);
 
     // 根据用户ID查询订单列表
-    List<Order> getOrdersByUserId(@Param("userId") Long userId);
+    List<Order> getOrdersByUserId(@Param("userId") int userId);
 
     // 根据订单ID查询订单详情
-    Order getOrderById(@Param("orderId") Long orderId);
+    Order getOrderById(@Param("orderId") int orderId);
 }
