@@ -11,9 +11,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-    private Long id;
-    private Long userId;
-    private Long productId;
+    private int id;
+    private int userId;
+    private int productId;
     private int quantity;
     private double totalPrice;
     private Date orderDate;
