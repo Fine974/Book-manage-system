@@ -24,7 +24,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Inventory getInventoryByProductId(Long productId) {
+    public Inventory getInventoryByProductId(int productId) {
         return inventoryMapper.getInventoryByProductId(productId);
     }
 
@@ -34,7 +34,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public void adjustInventory(Long productId, int quantity) {
+    public void adjustInventory(int productId, int quantity) {
         inventoryMapper.adjustInventory(productId, quantity);
     }
 }

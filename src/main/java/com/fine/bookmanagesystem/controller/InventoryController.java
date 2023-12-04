@@ -24,7 +24,7 @@ public class InventoryController {
     }
 
     @GetMapping("/{productId}")
-    public Inventory getInventoryByProductId(@PathVariable Long productId) {
+    public Inventory getInventoryByProductId(@PathVariable int productId) {
         return inventoryService.getInventoryByProductId(productId);
     }
 
@@ -34,7 +34,7 @@ public class InventoryController {
     }
 
     @PostMapping("/adjust")
-    public void adjustInventory(@RequestParam Long productId, @RequestParam int quantity) {
+    public void adjustInventory(@RequestParam int productId, @RequestParam int quantity) {
         inventoryService.adjustInventory(productId, quantity);
     }
 }

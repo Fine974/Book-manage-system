@@ -13,11 +13,11 @@ public interface InventoryMapper {
     List<Inventory> getAllInventory();
 
     // 根据图书ID查询库存
-    Inventory getInventoryByProductId(@Param("productId") Long productId);
+    Inventory getInventoryByProductId(@Param("productId") int productId);
 
     // 更新库存信息
     void updateInventory(Inventory inventory);
 
     // 手动调整库存
-    void adjustInventory(@Param("productId") Long productId, @Param("quantity") int quantity);
+    void adjustInventory(@Param("productId") int productId, @Param("quantity") int quantity);
 }
