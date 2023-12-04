@@ -1,0 +1,30 @@
+<!-- ProductMapper.xml -->
+
+<mapper namespace="com.fine.bookmanagesystem.dao.ProductDao">
+
+    <!-- 查询所有商品 -->
+    <select id="getAllProducts" resultType="com.fine.bookmanagesystem.model.Product">
+        SELECT * FROM product;
+    </select>
+
+    <!-- 根据ID查询商品 -->
+    <select id="getProductById" parameterType="Long" resultType="com.fine.bookmanagesystem.model.Product">
+        SELECT * FROM product WHERE id = #{id};
+    </select>
+
+    <!-- 添加商品 -->
+    <insert id="addProduct" parameterType="com.fine.bookmanagesystem.model.Product">
+        INSERT INTO product (title, author, price) VALUES (#{title}, #{author}, #{price});
+    </insert>
+
+    <!-- 更新商品信息 -->
+    <update id="updateProduct" parameterType="com.fine.bookmanagesystem.model.Product">
+        UPDATE product SET title = #{title}, author = #{author}, price = #{price} WHERE id = #{id};
+    </update>
+
+    <!-- 删除商品 -->
+    <delete id="deleteProduct" parameterType="Long">
+        DELETE FROM product WHERE id = #{id};
+    </delete>
+
+</mapper>
