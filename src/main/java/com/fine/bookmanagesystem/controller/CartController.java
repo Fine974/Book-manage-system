@@ -29,7 +29,7 @@ public class CartController {
 
     // Add a book to the user's cart
     @PostMapping("/add")
-    public String addToCart(@RequestParam int userId, @RequestParam int bookId, @RequestParam int quantity) {
+    public String addToCart(@RequestParam Integer userId, @RequestParam Integer bookId, @RequestParam Integer quantity) {
         Cart cartItem = new Cart();
         cartItem.setUserId(userId);
         cartItem.setBookId(bookId);
