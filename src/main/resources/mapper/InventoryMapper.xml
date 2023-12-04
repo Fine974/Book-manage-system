@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fine.bookmanagesystem.mapper.InventoryMapper">
+
+    <resultMap id="inventoryResultMap" type="com.fine.bookmanagesystem.model.Inventory">
+        <id property="id" column="id" />
+        <result property="productId" column="product_id" />
+        <result property="quantity" column="quantity" />
+    </resultMap>
+
+    <select id="getAllInventory" resultMap="inventoryResultMap">
+        SELECT * FROM inventory;
+    </select>
+
+    <select id="getInventoryByProductId" resultMap="inventoryResultMap">
+        SELECT * FROM inventory WHERE product_id = #{productId};
+    </select>
+
+    <update id="updateInventory">
+        UPDATE inventory SET quantity = #{quantity} WHERE id = #{id};
+    </update>
+
+    <update id="adjustInventory">
+        UPDATE inventory SET quantity = quantity + #{quantity} WHERE product_id = #{productId};
+    </update>
+
+    <!-- 其他库存管理的SQL语句，根据实际需求添加 -->
+
+</mapper>
