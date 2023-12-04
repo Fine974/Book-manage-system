@@ -3,10 +3,9 @@ package com.fine.bookmanagesystem.controller;
 import com.fine.bookmanagesystem.model.Order;
 import com.fine.bookmanagesystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -19,13 +18,18 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/placeOrder")
-    public String placeOrder(@RequestBody Order order) {
-        try {
-            orderService.placeOrder(order);
-            return "Order placed successfully!";
-        } catch (Exception e) {
-            return "Failed to place order. Error: " + e.getMessage();
-        }
+    @PostMapping("/create")
+    public void createOrder(@RequestBody Order order) {
+        orderService.createOrder(order);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+        return orderService.getOrdersByUserId(userId);
+    }
+
+    @GetMapping("/{orderId}")
+    public Order getOrderById(@PathVariable Long orderId) {
+        return orderService.getOrderById(orderId);
     }
 }
