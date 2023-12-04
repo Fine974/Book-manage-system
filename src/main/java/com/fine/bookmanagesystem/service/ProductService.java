@@ -1,6 +1,7 @@
 package com.fine.bookmanagesystem.service;
 
 import com.fine.bookmanagesystem.model.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

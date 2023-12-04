@@ -4,6 +4,7 @@ import com.fine.bookmanagesystem.model.Product;
 
 import java.util.List;
 
+
 public interface ProductDao {
 
     // 查询所有商品
