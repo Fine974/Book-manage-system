@@ -24,14 +24,17 @@ create table cart
 -- auto-generated definition
 create table `order`
 (
-    orderId    int auto_increment comment '订单号'
+    id         int auto_increment comment '订单号'
         primary key,
     userId     int    not null comment '用户号',
-    bookId     int    not null comment '书号',
+    productId  int    not null comment '书号',
     quantity   int    not null comment '数量',
-    totalPrice double not null comment '总金额'
+    totalPrice double not null comment '总金额',
+    orderDate  date   not null comment '订单创建时间'
 )
     comment '订单';
+
+
 
 -- auto-generated definition
 create table inventory
