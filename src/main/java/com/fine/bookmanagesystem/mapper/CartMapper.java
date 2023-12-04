@@ -8,15 +8,15 @@ import java.util.List;
 @Mapper
 public interface CartMapper {
 
-    List<Cart> getCartItemsByUserId(Long userId);
+    List<Cart> getCartItemsByUserId(Integer userId);
 
-    Cart getCartItemById(Long id);
+    Cart getCartItemById(Integer id);
 
     void addToCart(Cart cartItem);
 
     void updateCartItemQuantity(Cart cartItem);
 
-    void removeFromCart(Long id);
+    void removeFromCart(Integer id);
 
-    void clearCart(Long userId);
+    void clearCart(Integer userId);
 }

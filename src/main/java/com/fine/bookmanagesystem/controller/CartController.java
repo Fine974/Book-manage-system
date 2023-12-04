@@ -21,7 +21,7 @@ public class CartController {
 
     // Display the user's cart
     @GetMapping
-    public String viewCart(@RequestParam Long userId, Model model) {
+    public String viewCart(@RequestParam Integer userId, Model model) {
         List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
         model.addAttribute("cartItems", cartItems);
         return "cart/view";  // Assuming you have a Thymeleaf template named "view.html" to display the cart
@@ -41,7 +41,7 @@ public class CartController {
 
     // Update the quantity of a book in the user's cart
     @PostMapping("/update")
-    public String updateCartItemQuantity(@RequestParam Long cartItemId, @RequestParam int quantity) {
+    public String updateCartItemQuantity(@RequestParam Integer cartItemId, @RequestParam Integer quantity) {
         Cart cartItem = cartService.getCartItemById(cartItemId);
         cartItem.setQuantity(quantity);
 
@@ -51,7 +51,7 @@ public class CartController {
 
     // Remove a book from the user's cart
     @GetMapping("/remove/{cartItemId}")
-    public String removeFromCart(@PathVariable Long cartItemId) {
+    public String removeFromCart(@PathVariable Integer cartItemId) {
         Cart cartItem = cartService.getCartItemById(cartItemId);
         cartService.removeFromCart(cartItemId);
         return "redirect:/cart?userId=" + cartItem.getUserId();
@@ -59,7 +59,7 @@ public class CartController {
 
     // Clear all items from the user's cart
     @GetMapping("/clear")
-    public String clearCart(@RequestParam Long userId) {
+    public String clearCart(@RequestParam Integer userId) {
         cartService.clearCart(userId);
         return "redirect:/cart?userId=" + userId;
     }
