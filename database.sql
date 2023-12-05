@@ -5,7 +5,8 @@ create table product
         primary key,
     title  varchar(255) not null comment '书名',
     author varchar(255) not null comment '作者',
-    price  double       not null comment '价格'
+    price  double       not null comment '价格',
+    picture varchar(255) not null comment '图片'
 )
     comment '商品';
 

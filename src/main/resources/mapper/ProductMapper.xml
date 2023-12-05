@@ -13,7 +13,7 @@
 
     <!-- 添加商品 -->
     <insert id="addProduct" parameterType="com.fine.bookmanagesystem.model.Product">
-        INSERT INTO product (title, author, price) VALUES (#{title}, #{author}, #{price});
+        INSERT INTO product (title, author, price, picture) VALUES (#{title}, #{author}, #{price}, #{picture});
     </insert>
 
     <!-- 更新商品信息 -->
