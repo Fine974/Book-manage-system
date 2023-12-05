@@ -59,10 +59,10 @@ public class UserController {
         User user = userService.getUserByUsernameAndPassword(username, password);
         if (user != null) {
             // 登录成功
-            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             // 登录失败
-            return new ResponseEntity<>("Login failed", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 }
