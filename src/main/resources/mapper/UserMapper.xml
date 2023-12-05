@@ -36,4 +36,8 @@
     <delete id="deleteUser">
         DELETE FROM user WHERE id = #{userId};
     </delete>
+
+    <select id="getUserByUsernameAndPassword" resultMap="userResultMap">
+        SELECT * FROM user WHERE username = #{username} AND password = #{password};
+    </select>
 </mapper>
