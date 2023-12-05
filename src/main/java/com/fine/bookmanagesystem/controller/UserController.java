@@ -3,6 +3,8 @@ package com.fine.bookmanagesystem.controller;
 import com.fine.bookmanagesystem.model.User;
 import com.fine.bookmanagesystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,5 +52,17 @@ public class UserController {
     @PostMapping("/delete/{userId}")
     public void deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestParam String username, @RequestParam String password) {
+        User user = userService.getUserByUsernameAndPassword(username, password);
+        if (user != null) {
+            // 登录成功
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            // 登录失败
+            return new ResponseEntity<>("Login failed", HttpStatus.UNAUTHORIZED);
+        }
     }
 }

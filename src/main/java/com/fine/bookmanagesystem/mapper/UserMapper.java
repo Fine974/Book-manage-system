@@ -29,5 +29,6 @@ public interface UserMapper {
     // 删除用户
     void deleteUser(@Param("userId") Long userId);
 
-    // 其他用户管理操作，根据实际需求添加
+    // 根据用户名和密码验证用户登录
+    User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }
