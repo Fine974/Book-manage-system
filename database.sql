@@ -35,7 +35,6 @@ create table `order`
     comment '订单';
 
 
-
 -- auto-generated definition
 create table inventory
 (
@@ -46,3 +45,11 @@ create table inventory
 )
     comment '库存';
 
+CREATE TABLE user
+(
+    id       int auto_increment comment '用户ID' primary key,
+    username varchar(255) not null comment '用户名',
+    password varchar(255) not null comment '密码',
+    role     int not null comment '用户角色，0表示普通用户，1表示管理员'
+)
+    comment '用户/管理员';
