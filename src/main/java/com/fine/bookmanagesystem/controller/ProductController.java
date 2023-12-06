@@ -36,6 +36,28 @@ public class ProductController {
     // 显示单个商品详情
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
+
+    @GetMapping("")
+    public String showProducts(Model model) {
+        System.out.println("Controller method reached");
+
+        // Assuming you have a ProductService that provides product data
+        List<Product> products = productService.getAllProducts();
+
+        // Check if the product list is not empty
+        if (!products.isEmpty()) {
+            // Add the product list to the model
+            model.addAttribute("products", products);
+        } else {
+            // If the product list is empty, you can add a message or handle it as needed
+            model.addAttribute("noProductsMessage", "No products available");
+        }
+
+        // Return the name of the Thymeleaf template (products.html)
+        return "products";
+    }
+
+
     @GetMapping("/{id}")
     public String getProductDetails(@PathVariable Integer id, Model model) {
         try {
@@ -45,7 +67,7 @@ public class ProductController {
             if (product != null) {
                 model.addAttribute("product", product);
                 logger.info("Product details requested for id: {}", id);
-                return "product/details"; // 返回模板名称
+                return "products/details"; // 返回模板名称
             } else {
                 logger.warn("Product with id {} not found", id);
                 return "error/404"; // 返回404页面或其他错误处理页面
