@@ -174,12 +174,12 @@
     // 如果用户信息存在且包含username属性
     if (user && user.username) {
       // 创建下拉菜单元素
-      var dropdownItem = document.createElement('li');
+      var dropdownItem = document.createElement('div');
       dropdownItem.className = 'nav-item dropdown';
 
       // 创建下拉菜单的内容
       dropdownItem.innerHTML = `
-      <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="we">
         欢迎，${user.username}!
       </p>
       <div class="dropdown-menu">
