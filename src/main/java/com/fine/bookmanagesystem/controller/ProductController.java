@@ -8,9 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/products")
 public class ProductController {
 
@@ -28,11 +34,26 @@ public class ProductController {
     }
 
     // 显示单个商品详情
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+
     @GetMapping("/{id}")
     public String getProductDetails(@PathVariable Integer id, Model model) {
-        Product product = productService.getProductById(id);
-        model.addAttribute("product", product);
-        return "product/details"; // 这里假设有一个名为 "details.html" 的 Thymeleaf 模板用于显示商品详情
+        try {
+            // 获取商品信息的逻辑
+            Product product = productService.getProductById(id);
+
+            if (product != null) {
+                model.addAttribute("product", product);
+                logger.info("Product details requested for id: {}", id);
+                return "product/details"; // 返回模板名称
+            } else {
+                logger.warn("Product with id {} not found", id);
+                return "error/404"; // 返回404页面或其他错误处理页面
+            }
+        } catch (Exception e) {
+            logger.error("Error processing request for product details with id: {}", id, e);
+            return "error/500"; // 返回500页面或其他错误处理页面
+        }
     }
 
     // 处理添加商品的页面请求

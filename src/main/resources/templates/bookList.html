@@ -8,6 +8,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        a {
+            color: inherit; /* 继承父元素的颜色 */
+            text-decoration: none; /* 去除下划线 */
+        }
+
+        a:hover {
+            text-decoration: none; /* 悬停状态下继续隐藏下划线 */
+        }
+        .card-body h4 {
+            color: red; /* 设置h5元素的颜色为红色 */
+        }
+    </style>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -84,16 +97,18 @@
                 for (let j = i; j < i + 3 && j < products.length; j++) {
                     const product = products[j];
                     const productCard = `
-                    <div class="col-sm">
-                        <div class="card mb-3">
-                            <h3 class="card-header">${product.title}</h3>
-                            <div class="card-body">
-                                <h5 class="card-title">${product.title}</h5>
-                                <h6 class="card-subtitle text-muted">${product.author}</h6>
+                        <div class="col-sm">
+                            <div class="card mb-3">
+                                <a href="/products/${product.id}"> <!-- Add the link here -->
+                                    <h3 class="card-header">${product.title}</h3>
+                                    <img src="${product.picture}" class="card-img-top" alt="Product Image">
+                                    <div class="card-body">
+                                        <h4 class="card-title">￥${product.price}</h4>
+                                        <h6 class="card-subtitle text-muted">《${product.title}》 ${product.author}</h6>
+                                    </div>
+                                </a>
                             </div>
-                            <img src="${product.picture}" class="card-img-top" alt="Product Image">
                         </div>
-                    </div>
                 `;
                     row.innerHTML += productCard;
                 }
