@@ -24,12 +24,10 @@
 </head>
 <body>
 
-
 <!-- 导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">图书交易系统</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -41,7 +39,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="bookListPage">图书列表</a>
+        <a class="nav-link" href="products">图书列表</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">我的订单</a>
@@ -50,8 +48,7 @@
         <a class="nav-link" href="#">关于</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-           aria-expanded="false">下拉列表测试</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">下拉列表测试</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">项目1</a>
           <a class="dropdown-item" href="#">项目2</a>
@@ -64,8 +61,10 @@
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="搜索图书">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">搜索</button>
-      <a class="btn btn-primary" href="loginPage" role="button">登录</a>
-      <a class="btn btn-primary" href="registerPage" role="button">注册</a>
+      <!-- 添加一个用于显示用户名的元素 -->
+      <p id="usernameDisplay"></p>
+      <a id="loginBtn" class="btn btn-primary" href="loginPage" role="button">登录</a>
+      <a id="registerBtn" class="btn btn-primary" href="registerPage" role="button">注册</a>
     </form>
   </div>
 </nav>
@@ -73,12 +72,12 @@
 <div class="container mt-4">
   <h2>Product List</h2>
 
-  <div class="container">
+  <div class="container mt-5">
   <!-- Check if the product list is not empty -->
   <th:block th:if="${not #lists.isEmpty(products)}">
     <div class="row">
       <!-- Iterate over the products and display them -->
-      <div th:each="product : ${products}" class="col-sm">
+      <div class="col-lg-4" th:each="product : ${products}">
         <div class="card mb-3">
           <a th:href="@{/products/{id}(id=${product.id})}">
             <h3 class="card-header" th:text="${product.title}"></h3>
