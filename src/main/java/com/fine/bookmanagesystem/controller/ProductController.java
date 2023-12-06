@@ -3,13 +3,14 @@ package com.fine.bookmanagesystem.controller;
 import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/products")
 public class ProductController {
 
@@ -21,11 +22,9 @@ public class ProductController {
     }
 
     // 显示所有商品
-    @GetMapping
-    public String getAllProducts(Model model) {
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
-        return "product/list"; // 这里假设有一个名为 "list.html" 的 Thymeleaf 模板用于显示商品列表
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     // 显示单个商品详情
