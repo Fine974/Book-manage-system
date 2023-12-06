@@ -65,14 +65,17 @@
       xhr.open('POST', '/users/login', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            // 登录成功，重定向到
-            window.location.href = '/';
-          } else {
-            // 登录失败，可以在页面上显示错误消息等
-            alert('登录失败，请检查用户名和密码。');
-          }
+        // 修改成功登录的处理部分
+        if (xhr.status === 200) {
+          // 解析后端返回的JSON数据
+          var user = JSON.parse(xhr.responseText);
+          // 将用户信息存储在本地存储中
+          sessionStorage.setItem('user', JSON.stringify(user));
+          // 重定向到指定页面
+          window.location.href = '/';
+        } else {
+          // 登录失败，可以在页面上显示错误消息等
+          alert('登录失败，请检查用户名和密码。');
         }
       };
       // 发送登录请求

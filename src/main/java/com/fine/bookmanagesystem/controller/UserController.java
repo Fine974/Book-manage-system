@@ -66,11 +66,11 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<User> loginUser(@RequestParam String username, @RequestParam String password) {
         User user = userService.getUserByUsernameAndPassword(username, password);
         if (user != null) {
             // 登录成功
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
             // 登录失败
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
