@@ -2,10 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">图书交易系统</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">首页
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/products">图书列表</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">我的订单</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">关于</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+           aria-expanded="false">下拉列表测试</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">项目1</a>
+          <a class="dropdown-item" href="#">项目2</a>
+          <a class="dropdown-item" href="#">项目3</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">项目4</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="搜索图书">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">搜索</button>
+      <!-- 添加一个用于显示用户名的元素 -->
+      <span id="usernameDisplay"></span>
+      <a id="loginBtn" class="btn btn-primary" href="loginPage" role="button">登录</a>
+      <a id="registerBtn" class="btn btn-primary" href="registerPage" role="button">注册</a>
+    </form>
+  </div>
+</nav>
 
 <h2>Your Shopping Cart</h2>
 
@@ -34,5 +84,43 @@
 
 <p><a th:href="@{/cart/clear(userId=${userId})}">Clear Cart</a></p>
 
+<!-- Bootstrap JS 和 Popper.js（如果需要的话）-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 从会话存储中获取用户信息
+    var user = JSON.parse(sessionStorage.getItem('user'));
+
+    // 如果用户信息存在且包含username属性
+    if (user && user.username) {
+      // 创建下拉菜单元素
+      var dropdownItem = document.createElement('ul');
+      dropdownItem.className = 'navbar-nav';
+
+      // 创建下拉菜单的内容
+      dropdownItem.innerHTML = `
+              <li class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">
+                欢迎，${user.username}!
+              </li>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="/cart?userId=${user.id}">购物车</a>
+                <a class="dropdown-item" href="#">个人信息</a>
+                <a class="dropdown-item" href="#">设置</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">注销</a>
+              </div>
+            `;
+
+      // 将下拉菜单添加到导航栏
+      document.getElementById('navbarColor01').appendChild(dropdownItem);
+
+      // 隐藏登录和注册按钮
+      document.getElementById('loginBtn').style.display = 'none';
+      document.getElementById('registerBtn').style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>

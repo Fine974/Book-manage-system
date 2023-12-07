@@ -1,12 +1,16 @@
 package com.fine.bookmanagesystem.controller;
 
 import com.fine.bookmanagesystem.model.Cart;
+import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/cart")
@@ -20,11 +24,28 @@ public class CartController {
     }
 
     // Display the user's cart
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @GetMapping("/{userId}")
-    public String viewCart(@RequestParam Integer userId, Model model) {
-        List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
-        model.addAttribute("cartItems", cartItems);
-        return "cart/view";  // Assuming you have a Thymeleaf template named "view.html" to display the cart
+    public String viewCart(@PathVariable Integer userId, Model model) {
+        System.out.println("Controller method reached");
+//        List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
+//        model.addAttribute("cartItems", cartItems);
+//        return "cart/view";  // Assuming you have a Thymeleaf template named "view.html" to display the cart
+        try {
+            List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
+
+            if (cartItems != null) {
+                model.addAttribute("cartItems", cartItems);
+                logger.info("userId details requested for id: {}", userId);
+                return "cart/view"; // 返回模板名称
+            } else {
+                logger.warn("userId with id {} not found", userId);
+                return "error/404"; // 返回404页面或其他错误处理页面
+            }
+        } catch (Exception e) {
+            logger.error("Error processing request for product details with id: {}", userId, e);
+            return "error/500"; // 返回500页面或其他错误处理页面
+        }
     }
 
     // Add a book to the user's cart

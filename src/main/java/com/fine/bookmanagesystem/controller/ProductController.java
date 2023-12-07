@@ -36,11 +36,8 @@ public class ProductController {
     // 显示单个商品详情
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-
     @GetMapping("")
     public String showProducts(Model model) {
-        System.out.println("Controller method reached");
-
         // Assuming you have a ProductService that provides product data
         List<Product> products = productService.getAllProducts();
 
