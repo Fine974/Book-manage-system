@@ -1,7 +1,6 @@
 package com.fine.bookmanagesystem.controller;
 
 import com.fine.bookmanagesystem.model.Cart;
-import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
