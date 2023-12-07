@@ -22,7 +22,7 @@
     </update>
 
     <!-- 删除商品 -->
-    <delete id="deleteProduct" parameterType="Long">
+    <delete id="deleteProduct" parameterType="java.lang.Integer">
         DELETE FROM product WHERE id = #{id};
     </delete>
 </mapper>
