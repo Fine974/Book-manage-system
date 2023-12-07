@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminController {
-    @RequestMapping("/adminPage")
+    @RequestMapping("/adminIndex")
     public String login() {
         return "adminIndex";
     }
