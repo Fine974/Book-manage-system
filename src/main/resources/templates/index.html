@@ -202,12 +202,12 @@
   <li class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">
     欢迎，${user.username}!
   </li>
-  <div class="dropdown-menu dropdown-menu-right"> <!-- 添加 dropdown-menu-right 样式 -->
-    <a class="dropdown-item" href="#">项目1</a>
-    <a class="dropdown-item" href="#">项目2</a>
-    <a class="dropdown-item" href="#">项目3</a>
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="/cart?userId=${user.id}">购物车</a>
+    <a class="dropdown-item" href="#">个人信息</a>
+    <a class="dropdown-item" href="#">设置</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">项目4</a>
+    <a class="dropdown-item" href="#">注销</a>
   </div>
 `;
 

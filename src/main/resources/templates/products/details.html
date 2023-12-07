@@ -58,11 +58,12 @@
   </div>
 </nav>
 
+<!-- 主页面 -->
 <div class="container mt-5">
   <div class="row">
     <!-- Product Image -->
     <div class="col-lg-6">
-      <img src="${product.picture}" alt="Product Image" class="img-fluid">
+      <img th:src="${product.picture}" alt="Product Image" class="img-fluid">
     </div>
 
     <!-- Product Details -->
@@ -81,7 +82,7 @@
       </div>
 
       <!-- Add to Cart Button -->
-      <button class="btn btn-primary btn-lg">Add to Cart</button>
+      <button class="btn btn-primary btn-lg">加入到购物车</button>
     </div>
   </div>
 

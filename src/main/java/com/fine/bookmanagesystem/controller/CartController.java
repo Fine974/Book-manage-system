@@ -20,7 +20,7 @@ public class CartController {
     }
 
     // Display the user's cart
-    @GetMapping
+    @GetMapping("/{userId}")
     public String viewCart(@RequestParam Integer userId, Model model) {
         List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
         model.addAttribute("cartItems", cartItems);

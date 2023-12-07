@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private Long id;
+    private int id;
     private String username;
     private String password;
     private int role; // 0: 普通用户, 1: 管理员
