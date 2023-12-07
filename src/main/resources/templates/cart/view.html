@@ -46,32 +46,33 @@
   </div>
 </nav>
 
-<h2>Your Shopping Cart</h2>
 
-<table border="1">
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Book ID</th>
-    <th>Quantity</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <!-- Iterate through the cart items -->
-  <tr th:each="cartItem : ${cartItems}">
-    <td th:text="${cartItem.id}"></td>
-    <td th:text="${cartItem.bookId}"></td>
-    <td th:text="${cartItem.quantity}"></td>
-    <td>
-      <!-- Link to remove the item from the cart -->
-      <a th:href="@{/cart/remove/{id}(id=${cartItem.id})}">Remove</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="container mt-5">
+  <h2>我的购物车</h2>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">序号</th>
+      <th scope="col">书号</th>
+      <th scope="col">数量</th>
+      <th scope="col">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cartItem : ${cartItems}" scope="row">
+      <td th:text="${cartItem.id}"></td>
+      <td th:text="${cartItem.bookId}"></td>
+      <td th:text="${cartItem.quantity}"></td>
+      <td>
+        <!-- Link to remove the item from the cart -->
+        <a th:href="@{/cart/remove/{id}(id=${cartItem.id})}">移出购物车</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><a th:href="@{/cart/clear(userId=${userId})}">清空购物车</a></p>
+</div>
 
-<p><a th:href="@{/cart/clear(userId=${userId})}">Clear Cart</a></p>
 
 <!-- Bootstrap JS 和 Popper.js（如果需要的话）-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
