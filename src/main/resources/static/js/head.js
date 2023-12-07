@@ -36,5 +36,11 @@ document.addEventListener('DOMContentLoaded', function () {
             // 重新加载页面或进行其他操作，比如跳转到登录页面
             window.location.href = '/';
         });
+        if (user.role === 1) {
+            var adminLink = document.createElement('li');
+            adminLink.className = 'nav-item';
+            adminLink.innerHTML = '<a class="nav-link" href="#">后台管理</a>';
+            document.getElementById('adminNavItem').appendChild(adminLink);
+        }
     }
 });
