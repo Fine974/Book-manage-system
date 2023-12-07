@@ -13,7 +13,7 @@
     </select>
 
     <select id="getInventoryByProductId" resultMap="inventoryResultMap">
-        SELECT * FROM inventory WHERE product_id = #{productId};
+        SELECT * FROM inventory WHERE productId = #{productId};
     </select>
 
     <update id="updateInventory">
@@ -21,7 +21,7 @@
     </update>
 
     <update id="adjustInventory">
-        UPDATE inventory SET quantity = quantity + #{quantity} WHERE product_id = #{productId};
+        UPDATE inventory SET quantity = quantity + #{quantity} WHERE productId = #{productId};
     </update>
 
     <!-- 其他库存管理的SQL语句，根据实际需求添加 -->

@@ -12,15 +12,15 @@
     </resultMap>
 
     <insert id="createOrder">
-        INSERT INTO orders (user_id, product_id, quantity, total_price, order_date)
+        INSERT INTO order (userId, productId, quantity, totalPrice, orderDate)
         VALUES (#{userId}, #{productId}, #{quantity}, #{totalPrice}, #{orderDate});
     </insert>
 
     <select id="getOrdersByUserId" resultMap="orderResultMap">
-        SELECT * FROM orders WHERE user_id = #{userId};
+        SELECT * FROM order WHERE userId = #{userId};
     </select>
 
     <select id="getOrderById" resultMap="orderResultMap">
-        SELECT * FROM orders WHERE id = #{orderId};
+        SELECT * FROM order WHERE id = #{orderId};
     </select>
 </mapper>
