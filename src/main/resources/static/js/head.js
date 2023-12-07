@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <a class="dropdown-item" href="#">个人信息</a>
                 <a class="dropdown-item" href="#">设置</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">注销</a>
+                <a class="dropdown-item" href="#" id="logoutBtn">注销</a>
               </div>
             `;
 
@@ -28,5 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // 隐藏登录和注册按钮
         document.getElementById('loginBtn').style.display = 'none';
         document.getElementById('registerBtn').style.display = 'none';
+
+        // 添加注销按钮的点击事件
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            // 清除会话存储中的用户信息
+            sessionStorage.removeItem('user');
+            // 重新加载页面或进行其他操作，比如跳转到登录页面
+            window.location.href = '/';
+        });
     }
 });
