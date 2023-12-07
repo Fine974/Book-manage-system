@@ -8,6 +8,12 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="/static/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .custom-width {
+      width: 70px;
+      height: 40px;
+    }
+  </style>
 </head>
 <body>
 
@@ -52,7 +58,7 @@
   <div class="row">
     <!-- Product Image -->
     <div class="col-lg-6">
-      <img th:src="${product.picture}" alt="Product Image" class="img-fluid">
+      <img th:src="${product.picture}" alt="Product Image" class="img-fluid" width="400">
     </div>
 
     <!-- Product Details -->
@@ -70,8 +76,14 @@
         <span class="font-weight-bold">状态:</span> 有货
       </div>
 
+      <!-- Quantity Selector -->
+      <div class="mb-3">
+        <label for="quantity">选择数目:</label>
+        <input type="number" id="quantity" name="quantity" class="form-control custom-width d-inline-block" value="1" min="1">
+      </div>
       <!-- Add to Cart Button -->
-      <button class="btn btn-primary btn-lg">加入到购物车</button>
+      <button id="addToCartBtn" th:attr="data-bookId=${product.id}" class="btn btn-primary btn-lg">加入到购物车</button>
+
     </div>
   </div>
 
@@ -93,5 +105,36 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 <script src="/js/head.js"></script>
+<script>
+  document.getElementById("addToCartBtn").addEventListener("click", function() {
+    // 获取用户ID、书籍ID和数量
+    var bookId = document.getElementById("addToCartBtn").getAttribute("data-bookId");
+    var user = JSON.parse(sessionStorage.getItem('user'));
+    var userId = user.id
+    var quantity = document.getElementById("quantity").value;
+
+    // 创建一个新的XMLHttpRequest对象
+    var xhr = new XMLHttpRequest();
+
+    // 配置POST请求
+    xhr.open("POST", "/cart/add", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // 定义回调函数，处理响应
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // 处理成功响应，可以选择在此处执行一些操作
+        window.location.href = "/cart?userId=" + userId; // 重定向到购物车页面
+      }
+    };
+
+    // 构建POST请求的数据
+    var data = "userId=" + userId + "&bookId=" + bookId + "&quantity=" + quantity;
+
+    // 发送POST请求
+    xhr.send(data);
+  });
+</script>
+
 </body>
 </html>

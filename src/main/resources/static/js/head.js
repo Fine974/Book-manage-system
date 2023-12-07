@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 欢迎，${user.username}!
               </li>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="/cart/${user.id}">购物车</a>
+                <a class="dropdown-item" href="/cart?userId=${user.id}">购物车</a>
                 <a class="dropdown-item" href="#">个人信息</a>
                 <a class="dropdown-item" href="#">设置</a>
                 <div class="dropdown-divider"></div>

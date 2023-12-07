@@ -3,8 +3,12 @@
 <mapper namespace="com.fine.bookmanagesystem.mapper.CartMapper">
 
     <select id="getCartItemsByUserId" parameterType="java.lang.Integer" resultType="com.fine.bookmanagesystem.model.Cart">
-        SELECT * FROM cart WHERE userId = #{userId};
+        SELECT c.*, p.title as bookTitle, p.price as bookPrice
+        FROM cart c
+                 INNER JOIN product p ON c.bookId = p.id
+        WHERE c.userId = #{userId};
     </select>
+
 
     <select id="getCartItemById" parameterType="java.lang.Integer" resultType="com.fine.bookmanagesystem.model.Cart">
         SELECT * FROM cart WHERE id = #{id};

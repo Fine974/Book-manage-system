@@ -46,22 +46,26 @@
   </div>
 </nav>
 
-
 <div class="container mt-5">
   <h2>我的购物车</h2>
-  <table class="table table-hover">
+
+  <div th:if="${#lists.isEmpty(cartItems)}">
+    <p>您的购物车是空的。</p>
+  </div>
+
+  <table class="table table-hover" th:unless="${#lists.isEmpty(cartItems)}">
     <thead>
     <tr>
-      <th scope="col">序号</th>
-      <th scope="col">书号</th>
+      <th scope="col">书名</th>
+      <th scope="col">单价</th>
       <th scope="col">数量</th>
       <th scope="col">操作</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="cartItem : ${cartItems}" scope="row">
-      <td th:text="${cartItem.id}"></td>
-      <td th:text="${cartItem.bookId}"></td>
+      <td th:text="${cartItem.bookTitle}"></td>
+      <td th:text="'￥' + ${cartItem.bookPrice}"></td>
       <td th:text="${cartItem.quantity}"></td>
       <td>
         <!-- Link to remove the item from the cart -->
@@ -70,8 +74,12 @@
     </tr>
     </tbody>
   </table>
-  <p><a th:href="@{/cart/clear(userId=${userId})}">清空购物车</a></p>
+
+  <p th:unless="${#lists.isEmpty(cartItems)}">
+    <a th:href="@{/cart/clear(userId=${cartItems[0].userId})}">清空购物车</a>
+  </p>
 </div>
+
 
 
 <!-- Bootstrap JS 和 Popper.js（如果需要的话）-->

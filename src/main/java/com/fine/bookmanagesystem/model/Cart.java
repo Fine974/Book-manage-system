@@ -14,4 +14,7 @@ public class Cart {
     private int userId;
     private int bookId;
     private int quantity;
+
+    private String bookTitle;
+    private double bookPrice;
 }
