@@ -47,6 +47,7 @@ public class OrderController {
     @GetMapping("/user/{userId}")
     public String getOrdersByUserId(@PathVariable Integer userId, Model model) {
         List<Order> order = orderService.getOrdersByUserId(userId);
+        System.out.println(order);
         model.addAttribute("order", order);
         return "orders";
     }

@@ -16,7 +16,8 @@
         VALUES (#{userId}, #{productId}, #{quantity}, #{totalPrice}, #{orderDate});
     </insert>
 
-    <select id="getOrdersByUserId" resultMap="orderResultMap">
+    <select id="getOrdersByUserId" parameterType="java.lang.Integer" resultType="com.fine.bookmanagesystem.model.Order">
+<!--    <select id="getOrdersByUserId" resultMap="orderResultMap">-->
         SELECT * FROM `order` WHERE userId = #{userId};
     </select>
 
