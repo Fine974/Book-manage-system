@@ -70,8 +70,8 @@
       <td th:text="'￥' + ${cartItem.bookPrice}"></td>
       <td th:text="${cartItem.quantity}"></td>
       <td>
-        <!-- Link to remove the item from the cart -->
         <a th:href="@{/cart/remove/{id}(id=${cartItem.id})}">移出购物车</a>
+        <a th:href="@{/orders/placeOrder/{id}(id=${cartItem.id})}">下单</a>
       </td>
     </tr>
     </tbody>
