@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (user.role === 1) {
             var adminLink = document.createElement('li');
             adminLink.className = 'nav-item';
-            adminLink.innerHTML = '<a class="nav-link" href="adminIndex">后台管理</a>';
+            adminLink.innerHTML = '<a class="nav-link" href="/adminIndex">后台管理</a>';
             document.getElementById('adminNavItem').appendChild(adminLink);
         }
     }
