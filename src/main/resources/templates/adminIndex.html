@@ -9,6 +9,13 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchData('productsAll');
+    });
+</script>
+
 <body>
 
 <!-- 导航栏 -->
@@ -50,16 +57,13 @@
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link active" href="#" onclick="fetchData('productsAll')">商品管理</a>
+        <a class="nav-link active" href="#" onclick="fetchData('productsAll', event)">商品管理</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#" onclick="fetchData('usersAll')">用户管理</a>
+        <a class="nav-link" href="#" onclick="fetchData('usersAll', event)">用户管理</a>
     </li>
 </ul>
-<div id="content1" class="tab-content container mt-4">
-    <!-- 数据将在这里显示 -->
-</div>
-<div id="content2" class="tab-content container mt-4">
+<div id="content" class="tab-content container mt-4">
     <!-- 数据将在这里显示 -->
 </div>
 

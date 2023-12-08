@@ -1,10 +1,19 @@
 function fetchData(type) {
+    // Update active class for tabs
+    if (event) {
+        // Update active class for tabs
+        document.querySelectorAll('.nav-item .nav-link').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+    }
+
     fetch(`http://localhost:8080/${type}`)
         .then(response => response.json())
         .then(data => {
             if (type === 'productsAll') {
                 updateProductTable(data); // Update the table with product data
-            } else if (type === 'userAll') {
+            } else if (type === 'usersAll') {
                 updateUserTable(data)
             }
             else{
@@ -16,7 +25,7 @@ function fetchData(type) {
 }
 
 function updateProductTable(products) {
-    const contentDiv = document.getElementById('content1');
+    const contentDiv = document.getElementById('content');
     let tableHTML = '<h2>商品列表</h2>';
 
     if (products.length === 0) {
@@ -55,7 +64,7 @@ function updateProductTable(products) {
 }
 
 function updateUserTable(users) {
-    const contentDiv = document.getElementById('content2');
+    const contentDiv = document.getElementById('content');
     let tableHTML = '<h2>用户列表</h2>';
 
     if (users.length === 0) {
