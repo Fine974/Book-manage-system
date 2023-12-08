@@ -53,7 +53,7 @@ function updateProductTable(products) {
                     <td>${product.author}</td>
                     <td>${product.price}</td>
                     <td>${product.picture}</td>
-                    <td><a href="/products/${product.id}/delete">删除</a></td>
+                    <td><a href="/products/${product.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
                 </tr>`;
         });
 
@@ -90,7 +90,7 @@ function updateUserTable(users) {
                     <td>${user.username}</td>
                     <td>${user.role}</td>
                     <td>${user.password}</td>
-                    <td><a href="/users/${user.id}/delete">删除</a></td>
+                    <td><a href="/users/${user.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
                 </tr>`;
         });
 
