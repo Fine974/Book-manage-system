@@ -77,8 +77,9 @@
     </tbody>
   </table>
 
-  <p th:unless="${#lists.isEmpty(cartItems)}">
+  <p th:unless="${#lists.isEmpty(cartItems)}" class="d-flex justify-content-between">
     <a th:href="@{/cart/clear(userId=${cartItems[0].userId})}">清空购物车</a>
+    <a th:href="@{/orders/all(userId=${cartItems[0].userId})}" class="text-right ml-auto">一键下单</a>
   </p>
 </div>
 

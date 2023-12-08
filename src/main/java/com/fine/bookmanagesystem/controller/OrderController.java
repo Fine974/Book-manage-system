@@ -44,6 +44,24 @@ public class OrderController {
         return "redirect:/orders/user/" + cartItem.getUserId();
     }
 
+    @GetMapping("/all")
+    public String clearCart(@RequestParam Integer userId) {
+        List<Cart> cartItems = cartService.getCartItemsByUserId(userId);
+        int len = cartItems.size();
+        for(int i = 0; i < len; ++i) {
+            Cart cartItem = cartItems.get(i);
+            Order order = new Order();
+            order.setUserId(cartItem.getUserId());
+            order.setProductId(cartItem.getBookId());
+            order.setQuantity(cartItem.getQuantity());
+            order.setTotalPrice(cartItem.getBookPrice() * cartItem.getQuantity());
+            order.setOrderDate(new Date());
+            orderService.createOrder(order);
+        }
+        cartService.clearCart(userId);
+        return "redirect:/orders/user/" + userId;
+    }
+
     @GetMapping("/user/{userId}")
     public String getOrdersByUserId(@PathVariable Integer userId, Model model) {
         List<Order> order = orderService.getOrdersByUserId(userId);
