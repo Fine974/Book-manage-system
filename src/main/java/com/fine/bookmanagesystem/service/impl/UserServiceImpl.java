@@ -1,6 +1,7 @@
 package com.fine.bookmanagesystem.service.impl;
 
 import com.fine.bookmanagesystem.mapper.UserMapper;
+import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.model.User;
 import com.fine.bookmanagesystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return userMapper.getAllUsers();
+        List<User> users = userMapper.getAllUsers();
+        System.out.println("Number of users retrieved: " + users.size());
+        return users;
     }
 
     @Override

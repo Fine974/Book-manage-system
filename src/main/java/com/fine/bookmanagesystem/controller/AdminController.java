@@ -2,6 +2,7 @@ package com.fine.bookmanagesystem.controller;
 
 import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,13 @@ import java.util.List;
 @RequestMapping("/adminIndex")
 public class AdminController {
 
-    private ProductService productService;
+    private final ProductService productService;
+
+    @Autowired
+    public AdminController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @RequestMapping("")
     public String login() {
         return "adminIndex";
@@ -23,15 +30,12 @@ public class AdminController {
     public String showProductAll(Model model) {
         List<Product> products = productService.getAllProducts();
 
-        // 如果商品列表为空，可以添加一个自定义的消息
         if (products.isEmpty()) {
             model.addAttribute("noProductsMessage", "当前没有商品可显示。");
+        } else {
+            model.addAttribute("products", products);
         }
 
-        // 将商品列表添加到模型中
-        model.addAttribute("products", products);
-
-        // 返回对应的Thymeleaf模板名称
-        return "adminIndex"; // 这里假设您的Thymeleaf模板名称是 adminIndex.html
+        return "adminIndex"; // 确保 Thymeleaf 模板的名称是 adminIndex.html
     }
 }
