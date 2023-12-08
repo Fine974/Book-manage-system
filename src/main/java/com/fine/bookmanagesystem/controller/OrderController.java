@@ -1,13 +1,17 @@
 package com.fine.bookmanagesystem.controller;
 
 import com.fine.bookmanagesystem.model.Order;
+import com.fine.bookmanagesystem.model.Product;
 import com.fine.bookmanagesystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/orders")
 public class OrderController {
     private final OrderService orderService;
@@ -22,8 +26,10 @@ public class OrderController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Order> getOrdersByUserId(@PathVariable Integer userId) {
-        return orderService.getOrdersByUserId(userId);
+    public String getOrdersByUserId(@PathVariable Integer userId, Model model) {
+        List<Order> order = orderService.getOrdersByUserId(userId);
+        model.addAttribute("order", order);
+        return "orders";
     }
 
     @GetMapping("/{orderId}")

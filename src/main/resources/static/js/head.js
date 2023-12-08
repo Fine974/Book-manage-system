@@ -44,3 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+function redirectToUserOrders() {
+    // 获取会话中的userId
+    var user = JSON.parse(sessionStorage.getItem('user'));
+    var userId = user.id;
+
+    // 构建URL
+    var url = '/orders/user/' + userId;
+
+    // 重定向到URL
+    window.location.href = url;
+}
