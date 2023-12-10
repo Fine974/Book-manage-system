@@ -16,6 +16,9 @@ function fetchData(type) {
             } else if (type === 'usersAll') {
                 updateUserTable(data)
             }
+            else if (type === 'ordersAll') {
+                updateOrderTable(data)
+            }
             else{
                 // Handle other types of data
                 console.log(data);
@@ -91,6 +94,45 @@ function updateUserTable(users) {
                     <td>${user.role}</td>
                     <td>${user.password}</td>
                     <td><a href="/users/${user.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
+                </tr>`;
+        });
+
+        tableHTML += '</tbody></table>';
+    }
+
+    contentDiv.innerHTML = tableHTML;
+}
+
+function updateOrderTable(orders) {
+    const contentDiv = document.getElementById('content');
+    let tableHTML = '<h2>订单列表</h2>';
+
+    if (orders.length === 0) {
+        tableHTML += '<p>没有订单</p>';
+    } else {
+        tableHTML += `
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>订单号</th>
+                        <th>用户名</th>
+                        <th>商品名</th>
+                        <th>数量</th>
+                        <th>总价格</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+        orders.forEach(order => { // Corrected this line
+            tableHTML += `
+                <tr>
+                    <td>${order.id}</td>
+                    <td>${order.userName}</td>
+                    <td>${order.bookTitle}</td>
+                    <td>${order.quantity}</td>
+                    <td>${order.totalPrice}</td>
+                    <td><a href="/users/${order.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
                 </tr>`;
         });
 

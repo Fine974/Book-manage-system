@@ -57,7 +57,7 @@
         <thead>
         <tr>
             <th scope="col">订单号</th>
-            <th scope="col">商品id</th>
+            <th scope="col">商品名</th>
             <th scope="col">数量</th>
             <th scope="col">总价值</th>
             <th scope="col">日期</th>
@@ -66,10 +66,10 @@
         <tbody>
         <tr th:each="item : ${order}" scope="row">
             <td th:text="${item.id}"></td>
-            <td th:text="${item.productId}"></td>
+            <td th:text="${item.bookTitle}"></td>
             <td th:text="${item.quantity}"></td>
             <td th:text="${item.totalPrice}"></td>
-            <td th:text="${item.orderDate}"></td>
+            <td th:text="${#dates.format(item.orderDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
         </tr>
         </tbody>
     </table>

@@ -91,11 +91,20 @@
   <!-- Additional Product Information -->
   <div class="row mt-5">
     <div class="col-lg-12">
-      <h3>Additional Information</h3>
+      <h3>其他信息</h3>
       <ul>
-        <li><strong>Brand:</strong> ABC Brand</li>
-        <li><strong>Category:</strong> Electronics</li>
-        <li><strong>SKU:</strong> ABC123</li>
+        <li>
+          <strong>出版社:</strong>
+          <p class="d-inline-block" th:text="${product.publisher}"></p>
+        </li>
+        <li>
+          <strong>页数:</strong>
+          <p class="d-inline-block" th:text="${product.page}"></p>
+        </li>
+        <li>
+          <strong>ISBN:</strong>
+          <p class="d-inline-block" th:text="${product.isbn}"></p>
+        </li>
       </ul>
     </div>
   </div>

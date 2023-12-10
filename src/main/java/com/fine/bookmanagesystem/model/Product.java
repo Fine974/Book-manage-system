@@ -15,5 +15,8 @@ public class Product {
     private String author;
     private Double price;
     private String picture;
+    private String publisher;
+    private int page;
+    private String isbn;
 }
 

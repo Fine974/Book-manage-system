@@ -2,6 +2,7 @@ package com.fine.bookmanagesystem.service.impl;
 
 import com.fine.bookmanagesystem.mapper.OrderMapper;
 import com.fine.bookmanagesystem.model.Order;
+import com.fine.bookmanagesystem.model.User;
 import com.fine.bookmanagesystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(int orderId) {
         return orderMapper.getOrderById(orderId);
+    }
+
+    public List<Order> getAllOrders() {
+        List<Order> orders = orderMapper.getAllOrders();
+        System.out.println("Number of orders retrieved: " + orders.size());
+        return orders;
     }
 }

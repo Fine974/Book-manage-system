@@ -3,12 +3,7 @@
 <mapper namespace="com.fine.bookmanagesystem.mapper.OrderMapper">
 
     <resultMap id="orderResultMap" type="com.fine.bookmanagesystem.model.Order">
-        <id property="id" column="id" />
-        <result property="userId" column="user_id" />
-        <result property="productId" column="product_id" />
-        <result property="quantity" column="quantity" />
-        <result property="totalPrice" column="total_price" />
-        <result property="orderDate" column="order_date" />
+        <result column="bookTitle" property="bookTitle"/>
     </resultMap>
 
     <insert id="createOrder">
@@ -16,12 +11,26 @@
         VALUES (#{userId}, #{productId}, #{quantity}, #{totalPrice}, #{orderDate});
     </insert>
 
-    <select id="getOrdersByUserId" parameterType="java.lang.Integer" resultType="com.fine.bookmanagesystem.model.Order">
-<!--    <select id="getOrdersByUserId" resultMap="orderResultMap">-->
-        SELECT * FROM `order` WHERE userId = #{userId};
+<!--    <select id="getOrdersByUserId" parameterType="java.lang.Integer" resultType="com.fine.bookmanagesystem.model.Order">-->
+<!--        SELECT * FROM `order` WHERE userId = #{userId};-->
+<!--    </select>-->
+    <select id="getOrdersByUserId" parameterType="java.lang.Integer" resultMap="orderResultMap">
+        SELECT o.*, p.title AS bookTitle
+        FROM `order` o
+                 JOIN product p ON o.productId = p.id
+        WHERE o.userId = #{userId};
     </select>
+
 
     <select id="getOrderById" resultMap="orderResultMap">
         SELECT * FROM `order` WHERE id = #{orderId};
+    </select>
+
+    <!-- 查询所有订单 -->
+    <select id="getAllOrders" resultType="com.fine.bookmanagesystem.model.Order">
+        SELECT o.*, p.title AS bookTitle, u.username AS userName
+        FROM `order` o
+                 JOIN product p ON o.productId = p.id
+                 JOIN user u ON o.userId = u.id;
     </select>
 </mapper>
