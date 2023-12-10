@@ -22,7 +22,8 @@ public class AdminController {
     }
 
     @RequestMapping("")
-    public String login() {
+    public String adminIndex(Model model) {
+        model.addAttribute("product", new Product());
         return "adminIndex";
     }
 

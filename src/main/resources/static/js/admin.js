@@ -63,6 +63,19 @@ function updateProductTable(products) {
         tableHTML += '</tbody></table>';
     }
 
+    tableHTML += `
+        <div style="text-align: right">
+            <!-- 触发模态窗口的按钮 -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+                添加商品
+            </button>
+        </div>
+    `
+
+    tableHTML += `
+        <!-- 模态窗口 -->
+    `
+
     contentDiv.innerHTML = tableHTML;
 }
 
