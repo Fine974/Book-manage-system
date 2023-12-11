@@ -22,4 +22,6 @@ public interface OrderMapper {
 
     // 根据订单ID查询订单详情
     Order getOrderById(@Param("orderId") int orderId);
+
+    void deleteOrder(int id);
 }

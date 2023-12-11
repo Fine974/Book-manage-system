@@ -33,4 +33,7 @@
                  JOIN product p ON o.productId = p.id
                  JOIN user u ON o.userId = u.id;
     </select>
+    <delete id="deleteOrder" parameterType="java.lang.Integer">
+        DELETE FROM `order` WHERE id = #{id};
+    </delete>
 </mapper>

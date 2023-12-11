@@ -74,4 +74,10 @@ public class OrderController {
     public Order getOrderById(@PathVariable Integer orderId) {
         return orderService.getOrderById(orderId);
     }
+
+    @GetMapping("/{id}/delete")
+    public String deleteProduct(@PathVariable Integer id) {
+        orderService.deleteOrder(id);
+        return "redirect:/adminIndex#ordersAll";
+    }
 }

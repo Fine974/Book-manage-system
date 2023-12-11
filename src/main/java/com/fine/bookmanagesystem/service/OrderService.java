@@ -16,4 +16,6 @@ public interface OrderService {
 
 
     Order getOrderById(int orderId);
+
+    void deleteOrder(Integer id);
 }

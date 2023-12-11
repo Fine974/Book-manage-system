@@ -145,7 +145,7 @@ function updateOrderTable(orders) {
                     <td>${order.bookTitle}</td>
                     <td>${order.quantity}</td>
                     <td>${order.totalPrice}</td>
-                    <td><a href="/users/${order.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
+                    <td><a href="/orders/${order.id}/delete"><button type="button" class="btn btn-outline-success">删除</button></a></td>
                 </tr>`;
         });
 
