@@ -60,10 +60,6 @@ public class UserController {
         userService.updateUser(user);
     }
 
-    @PostMapping("/delete/{userId}")
-    public void deleteUser(@PathVariable Long userId) {
-        userService.deleteUser(userId);
-    }
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestParam String username, @RequestParam String password) {

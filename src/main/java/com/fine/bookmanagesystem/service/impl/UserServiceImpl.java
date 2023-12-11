@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long userId) {
+    public void deleteUser(Integer userId) {
         userMapper.deleteUser(userId);
     }
 

@@ -27,7 +27,7 @@ public interface UserMapper {
     void updateUser(User user);
 
     // 删除用户
-    void deleteUser(@Param("userId") Long userId);
+    void deleteUser(@Param("userId") Integer userId);
 
     // 根据用户名和密码验证用户登录
     User getUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
