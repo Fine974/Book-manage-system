@@ -19,7 +19,7 @@
 <body>
 
 <!-- 导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <a class="navbar-brand" href="#">图书交易系统</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="/">首页
                     <span class="sr-only">(current)</span>
                 </a>
@@ -55,7 +55,7 @@
     </div>
 </nav>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" style="padding-top: 70px;">
     <li class="nav-item">
         <a class="nav-link active" href="#" onclick="fetchData('productsAll', event)">商品管理</a>
     </li>
